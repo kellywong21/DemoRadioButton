@@ -10,12 +10,25 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+     Button btnOK;
+     RadioGroup rg;
+     RadioButton rb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        btnOK = findViewById(R.id.btnOK);
+        rg = findViewById(R.id.rg);
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedButtonId = rg.getCheckedRadioButtonId();
+                rb = findViewById(selectedButtonId);
+                Toast.makeText(MainActivity.this,rb.getText(),Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
